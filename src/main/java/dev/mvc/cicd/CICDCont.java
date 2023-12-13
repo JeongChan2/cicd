@@ -12,8 +12,9 @@ public class CICDCont {
   // http://localhost:9091/cicd?sw=-1
   // http://localhost:9091/cicd?sw=0
   // http://localhost:9091/cicd?sw=1
+  // http://localhost:9091/cicd?sw=2
   @GetMapping("/cicd")
-  public String cicd(@RequestParam(defaultValue = "1") Integer sw) { // defaultValue = "1" Integer 보고 defaultValue = 1 로 자동
+  public String cicd(@RequestParam(defaultValue = "1") Integer sw) {
     String msg = "";
     
     if (sw == -1) {
@@ -24,6 +25,9 @@ public class CICDCont {
       log.warn(msg);
     } else if (sw == 1) {
       msg = "/cicd 호출됨, info 로그";
+      log.info(msg);
+    } else if (sw == 2) {
+      msg = "/cide workflow 테스트";
       log.info(msg);
     }
     
